@@ -766,38 +766,45 @@ lazy_static! {
 }
 
 #[derive(Clone, Deserialize, Debug)]
-pub struct FundamentalAccountingConcept {
-    pub formula: Option<String>,
+pub struct OperationsConcept {
+    pub value: Option<f64>,
+    pub unit: Option<String>,
     pub label: Option<String>,
     pub order: Option<u32>,
-    pub unit: Option<String>,
-    pub value: Option<f64>,
 }
+
 #[derive(Clone, Deserialize, Debug)]
 pub struct FinancialDimensions {
-    pub balance_sheet: HashMap<String, FundamentalAccountingConcept>,
-    pub cash_flow_statement: HashMap<String, FundamentalAccountingConcept>,
-    pub comprehensive_income: HashMap<String, FundamentalAccountingConcept>,
-    pub income_statement: HashMap<String, FundamentalAccountingConcept>,
+    pub income_statement: Option<HashMap<String, OperationsConcept>>,
+    pub comprehensive_income: Option<HashMap<String, OperationsConcept>>,
+    pub cash_flow_statement: Option<HashMap<String, OperationsConcept>>,
+    pub balance_sheet: Option<HashMap<String, OperationsConcept>>,
 }
 
 #[derive(Clone, Deserialize, Debug)]
 pub struct ReferenceStockFinancialsVXResult {
-    pub cik: String,
-    pub company_name: String,
+    pub id: String,
+    pub start_date: Option<String>,
     pub end_date: Option<String>,
-    pub financials: FinancialDimensions,
+    pub acceptance_datetime: Option<String>,
+    pub timeframe : String,
     pub fiscal_period: String,
     pub fiscal_year: String,
-    pub source_filing_file_url: String,
-    pub start_date: Option<String>,
+    pub filing_date: Option<String>,
+    pub cik: String,
+    pub sic: String,
+    pub tickers: Vec<String>,
+    pub company_name: String,
+    pub financials: FinancialDimensions,
+    pub source_filing_file_url: Option<String>,
+    pub source_filing_url : Option<String>,
 }
 
 #[derive(Clone, Deserialize, Debug)]
 pub struct ReferenceStockFinancialsVXResponse {
-    pub count: u32,
-    pub next_url: String,
-    pub request_id: String,
+    pub count: Option<u32>,
+    pub next_url: Option<String>,
+    pub request_id: Option<String>,
     pub results: Vec<ReferenceStockFinancialsVXResult>,
     pub status: String,
 }
