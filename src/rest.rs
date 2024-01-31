@@ -233,10 +233,12 @@ impl RESTClient {
     /// [/vX/reference/financials](https://polygon.io/docs/get_vX_reference_financials_anchor) API.
     pub async fn reference_stock_financials_vx(
         &self,
+        stocks_ticker: &str,
         query_params: &HashMap<&str, &str>,
     ) -> Result<ReferenceStockFinancialsVXResponse, reqwest::Error> {
+        let uri = format!("/vX/reference/financials?ticker={}", stocks_ticker);
         self.send_request::<ReferenceStockFinancialsVXResponse>(
-            "/vX/reference/financials",
+&uri,
             query_params,
         )
         .await
