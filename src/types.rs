@@ -787,7 +787,7 @@ pub struct ReferenceStockFinancialsVXResult {
     pub start_date: Option<String>,
     pub end_date: Option<String>,
     pub acceptance_datetime: Option<String>,
-    pub timeframe : String,
+    pub timeframe: String,
     pub fiscal_period: String,
     pub fiscal_year: String,
     pub filing_date: Option<String>,
@@ -797,12 +797,11 @@ pub struct ReferenceStockFinancialsVXResult {
     pub company_name: String,
     pub financials: FinancialDimensions,
     pub source_filing_file_url: Option<String>,
-    pub source_filing_url : Option<String>,
+    pub source_filing_url: Option<String>,
 }
 
 #[derive(Clone, Deserialize, Debug)]
 pub struct ReferenceStockFinancialsVXResponse {
-    pub count: Option<u32>,
     pub next_url: Option<String>,
     pub request_id: Option<String>,
     pub results: Vec<ReferenceStockFinancialsVXResult>,
