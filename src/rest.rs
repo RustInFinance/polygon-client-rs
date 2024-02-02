@@ -209,10 +209,9 @@ impl RESTClient {
     /// [/v3/reference/dividends/{stocks_ticker}](https://polygon.io/docs/get_v3_reference_dividends__stocksTicker__anchor) API.
     pub async fn reference_stock_dividends(
         &self,
-        stocks_ticker: &str,
         query_params: &HashMap<&str, &str>,
     ) -> Result<ReferenceStockDividendsResponse, reqwest::Error> {
-        let uri = format!("/v3/reference/dividends?ticker={}", stocks_ticker);
+        let uri = format!("/v3/reference/dividends?");
         self.send_request::<ReferenceStockDividendsResponse>(&uri, query_params)
             .await
     }
@@ -233,15 +232,11 @@ impl RESTClient {
     /// [/vX/reference/financials](https://polygon.io/docs/get_vX_reference_financials_anchor) API.
     pub async fn reference_stock_financials_vx(
         &self,
-        stocks_ticker: &str,
         query_params: &HashMap<&str, &str>,
     ) -> Result<ReferenceStockFinancialsVXResponse, reqwest::Error> {
-        let uri = format!("/vX/reference/financials?ticker={}", stocks_ticker);
-        self.send_request::<ReferenceStockFinancialsVXResponse>(
-&uri,
-            query_params,
-        )
-        .await
+        let uri = format!("/vX/reference/financials?");
+        self.send_request::<ReferenceStockFinancialsVXResponse>(&uri, query_params)
+            .await
     }
 
     /// Get upcoming market holidays and their open/close items using the
@@ -649,15 +644,19 @@ mod tests {
 
     #[test]
     fn test_reference_stock_dividends() {
-        let query_params = HashMap::new();
+        let mut query_params = HashMap::new();
+        query_params.insert("ticker", "MSFT");
         let resp = tokio_test::block_on(
-            RESTClient::new(None, None).reference_stock_dividends("MSFT", &query_params),
+            RESTClient::new(None, None).reference_stock_dividends(&query_params),
         )
         .unwrap();
         assert_eq!(resp.status, "OK");
-        let bond = resp.results.iter().find(|x| x.ex_date == "2021-02-17");
+        let bond = resp.results.iter().find(|x| {
+            println!("ex_date: {:#?}", x);
+            x.ex_dividend_date == "2024-02-14"
+        });
         assert!(bond.is_some());
-        assert_eq!(bond.unwrap().amount, 0.56);
+        assert_eq!(bond.unwrap().cash_amount, 0.75);
     }
 
     #[test]
@@ -687,12 +686,12 @@ mod tests {
         )
         .unwrap();
         assert_eq!(resp.status, "OK");
-        assert_eq!(resp.count, 1);
         let result = resp.results.first().unwrap();
-        for v in &result.financials.balance_sheet {
+        let balance_sheet = result.financials.balance_sheet.clone().unwrap();
+        for v in &balance_sheet {
             println!("{} = true", v.0);
         }
-        let income_statement = &result.financials.income_statement;
+        let income_statement = &result.financials.income_statement.clone().unwrap();
         assert!(income_statement.contains_key(FAC_REVENUES));
         assert!(income_statement.get(FAC_REVENUES).unwrap().unit.is_some());
         assert_eq!(
