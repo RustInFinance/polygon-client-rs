@@ -15,7 +15,6 @@ pub struct ReferenceTickersResponseTickerV3 {
     pub name: String,
     pub market: String,
     pub locale: String,
-    pub primary_exchange: String,
     #[serde(rename = "type")]
     pub ticker_type: Option<String>,
     pub active: bool,
