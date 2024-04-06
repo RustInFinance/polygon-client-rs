@@ -129,20 +129,19 @@ impl RESTClient {
     /// Query all ticker symbols supported by polygon.io using the
     /// [/v3/reference/tickers](https://polygon.io/docs/get_v3_reference_tickers_anchor)
     /// API.
-    pub async fn fetch_next_page<T: serde::de::DeserializeOwned >(
+    pub async fn fetch_next_page<T: serde::de::DeserializeOwned>(
         &self,
         next_url: &str,
     ) -> Result<T, reqwest::Error> {
-            let dummy : HashMap<&str,&str>= HashMap::new();
-            let start = "https://api.polygon.io";
-            let url = if next_url.starts_with(start) {
-                let k = next_url.to_string().drain(start.len()..).collect();
-                k
-            } else {
-                next_url.to_string()
-            };
-            self.send_request::<T>(&url, &dummy)
-                .await
+        let dummy: HashMap<&str, &str> = HashMap::new();
+        let start = "https://api.polygon.io";
+        let url = if next_url.starts_with(start) {
+            let k = next_url.to_string().drain(start.len()..).collect();
+            k
+        } else {
+            next_url.to_string()
+        };
+        self.send_request::<T>(&url, &dummy).await
     }
 
     /// Get a mapping of ticker types to their descriptive names using the
@@ -164,7 +163,7 @@ impl RESTClient {
         stocks_ticker: &str,
         query_params: &HashMap<&str, &str>,
     ) -> Result<ReferenceTickerDetailsResponse, reqwest::Error> {
-        let uri = format!("/v1/meta/symbols/{}/company", stocks_ticker);
+        let uri = format!("/v3/reference/tickers/{}", stocks_ticker);
         self.send_request::<ReferenceTickerDetailsResponse>(&uri, query_params)
             .await
     }

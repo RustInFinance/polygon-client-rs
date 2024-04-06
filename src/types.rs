@@ -91,7 +91,44 @@ pub struct ReferenceTickerDetailsResponseV1 {
     pub active: bool,
 }
 
-pub type ReferenceTickerDetailsResponse = ReferenceTickerDetailsResponseV1;
+#[derive(Clone, Deserialize, Debug)]
+pub struct ReferenceTickerDetailsResponseV3 {
+    pub request_id: String,
+    pub status: String,
+    pub results: ReferenceTickerDetailsResultsV3,
+}
+
+#[derive(Clone, Deserialize, Debug)]
+pub struct ReferenceTickerDetailsResultsV3 {
+    pub ticker: String,
+    pub name: String,
+    pub market: String,
+    pub locale: String,
+    pub primary_exchange: String,
+    #[serde(rename = "type")]
+    pub ticker_type: Option<String>,
+    pub active: bool,
+    pub currency_name: String,
+    pub cik: Option<String>,
+    pub composite_figi: Option<String>,
+    pub share_class_figi: Option<String>,
+    pub market_cap: f64,
+    pub phone_number: String,
+    pub address: Address,
+    pub description: String,
+    pub sic_code: String,
+    pub sic_description: String,
+    pub ticker_root: String,
+    pub homepage_url: String,
+    pub total_employees: u64,
+    pub list_date: String,
+    pub branding: Branding,
+    pub share_class_shares_outstanding: f64,
+    pub weighted_shares_outstanding: f64,
+    pub round_lot: f64,
+}
+
+pub type ReferenceTickerDetailsResponse = ReferenceTickerDetailsResponseV3;
 
 //
 // vX/reference/tickers/{ticker}
@@ -100,8 +137,16 @@ pub type ReferenceTickerDetailsResponse = ReferenceTickerDetailsResponseV1;
 #[derive(Clone, Deserialize, Debug)]
 pub struct Address {
     pub address1: String,
+    pub address2: String,
     pub city: String,
     pub state: String,
+    pub postal_code: String,
+}
+
+#[derive(Clone, Deserialize, Debug)]
+pub struct Branding {
+    pub logo_url: String,
+    pub icon_url: String,
 }
 
 #[derive(Clone, Deserialize, Debug)]
