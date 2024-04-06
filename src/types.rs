@@ -98,7 +98,7 @@ pub struct ReferenceTickerDetailsResponseV3 {
     pub results: ReferenceTickerDetailsResultsV3,
 }
 
-#[derive(Clone, Deserialize, Debug)]
+#[derive(Default, Clone, Deserialize, Debug)]
 pub struct ReferenceTickerDetailsResultsV3 {
     pub ticker: String,
     pub name: String,
@@ -134,7 +134,7 @@ pub type ReferenceTickerDetailsResponse = ReferenceTickerDetailsResponseV3;
 // vX/reference/tickers/{ticker}
 //
 
-#[derive(Clone, Deserialize, Debug)]
+#[derive(Default, Clone, Deserialize, Debug)]
 pub struct Address {
     pub address1: String,
     pub address2: String,
@@ -143,7 +143,7 @@ pub struct Address {
     pub postal_code: String,
 }
 
-#[derive(Clone, Deserialize, Debug)]
+#[derive(Default, Clone, Deserialize, Debug)]
 pub struct Branding {
     pub logo_url: String,
     pub icon_url: String,
