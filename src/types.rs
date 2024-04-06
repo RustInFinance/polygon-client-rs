@@ -288,7 +288,7 @@ pub type ReferenceStockSplitsResponse = ReferenceStockSplitsResponseV2;
 pub struct ReferenceStockDividendsResultV3 {
     pub cash_amount: f64,
     pub currency: String,
-    pub declaration_date: String,
+    pub declaration_date: Option<String>,
     pub dividend_type: DividendType,
     pub ex_dividend_date: String,
     pub frequency: u32,
