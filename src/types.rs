@@ -122,7 +122,7 @@ pub struct ReferenceTickerDetailsResultsV3 {
     pub homepage_url: String,
     pub total_employees: u64,
     pub list_date: String,
-    pub branding: Branding,
+    pub branding: Option<Branding>,
     pub share_class_shares_outstanding: f64,
     pub weighted_shares_outstanding: f64,
     pub round_lot: f64,
