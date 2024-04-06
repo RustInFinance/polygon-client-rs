@@ -117,7 +117,7 @@ pub struct ReferenceTickerDetailsResultsV3 {
     pub address: Option<Address>,
     pub description: String,
     pub sic_code: Option<String>,
-    pub sic_description: String,
+    pub sic_description: Option<String>,
     pub ticker_root: String,
     pub homepage_url: String,
     pub total_employees: u64,
