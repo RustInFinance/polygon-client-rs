@@ -145,8 +145,8 @@ pub struct Address {
 
 #[derive(Default, Clone, Deserialize, Debug)]
 pub struct Branding {
-    pub logo_url: String,
-    pub icon_url: String,
+    pub logo_url: Option<String>,
+    pub icon_url: Option<String>,
 }
 
 #[derive(Clone, Deserialize, Debug)]
