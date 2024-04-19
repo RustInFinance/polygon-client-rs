@@ -291,7 +291,7 @@ pub struct ReferenceStockDividendsResultV3 {
     pub declaration_date: Option<String>,
     pub dividend_type: DividendType,
     pub ex_dividend_date: String,
-    pub frequency: u32,
+    pub frequency: Option<u32>,
     pub pay_date: String,
     pub record_date: String,
     pub ticker: String,
