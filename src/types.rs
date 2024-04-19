@@ -915,7 +915,7 @@ pub enum TickType {
     Quotes,
 }
 
-#[derive(Clone, Deserialize, Debug)]
+#[derive(Clone, Deserialize, Debug,PartialEq)]
 pub enum DividendType {
     CD, // Consistent dividends paid on schedule
     SC, // Special cash dividends (not to be expected to be consistenly paid)
