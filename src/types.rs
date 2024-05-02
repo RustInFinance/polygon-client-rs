@@ -22,7 +22,7 @@ pub struct ReferenceTickersResponseTickerV3 {
     pub cik: Option<String>,
     pub composite_figi: Option<String>,
     pub share_class_figi: Option<String>,
-    pub last_updated_utc: String,
+    pub last_updated_utc: Option<String>,
 }
 
 #[derive(Clone, Deserialize, Debug)]
@@ -163,7 +163,7 @@ pub struct ReferenceTickerDetailsResultsVX {
     pub cik: String,
     pub composite_fiji: Option<String>,
     pub share_class_fiji: Option<String>,
-    pub last_updated_utc: String,
+    pub last_updated_utc: Option<String>,
     pub delisted_utc: Option<String>,
     pub outstanding_shares: f64,
     pub market_cap: f64,
