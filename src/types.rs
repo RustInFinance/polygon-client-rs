@@ -12,12 +12,12 @@ use std::fmt;
 #[derive(Clone, Deserialize, Debug)]
 pub struct ReferenceTickersResponseTickerV3 {
     pub ticker: String,
-    pub name: String,
-    pub market: String,
-    pub locale: String,
+    pub name: Option<String>,
+    pub market: Option<String>,
+    pub locale: Option<String>,
     #[serde(rename = "type")]
     pub ticker_type: Option<String>,
-    pub active: bool,
+    pub active: Option<bool>,
     pub currency_name: Option<String>,
     pub cik: Option<String>,
     pub composite_figi: Option<String>,
