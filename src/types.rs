@@ -123,8 +123,8 @@ pub struct ReferenceTickerDetailsResultsV3 {
     pub total_employees: Option<u64>,
     pub list_date: Option<String>,
     pub branding: Option<Branding>,
-    pub share_class_shares_outstanding: f64,
-    pub weighted_shares_outstanding: f64,
+    pub share_class_shares_outstanding: Option<f64>,
+    pub weighted_shares_outstanding: Option<f64>,
     pub round_lot: f64,
 }
 
