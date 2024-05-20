@@ -112,7 +112,7 @@ pub struct ReferenceTickerDetailsResultsV3 {
     pub cik: Option<String>,
     pub composite_figi: Option<String>,
     pub share_class_figi: Option<String>,
-    pub market_cap: f64,
+    pub market_cap: Option<f64>,
     pub phone_number: Option<String>,
     pub address: Option<Address>,
     pub description: Option<String>,
