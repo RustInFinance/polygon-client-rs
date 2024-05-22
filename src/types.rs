@@ -136,7 +136,7 @@ pub type ReferenceTickerDetailsResponse = ReferenceTickerDetailsResponseV3;
 
 #[derive(Default, Clone, Deserialize, Debug)]
 pub struct Address {
-    pub address1: String,
+    pub address1: Option<String>,
     pub address2: Option<String>,
     pub city: String,
     pub state: String,
