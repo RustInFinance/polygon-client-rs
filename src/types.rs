@@ -138,9 +138,9 @@ pub type ReferenceTickerDetailsResponse = ReferenceTickerDetailsResponseV3;
 pub struct Address {
     pub address1: Option<String>,
     pub address2: Option<String>,
-    pub city: String,
-    pub state: String,
-    pub postal_code: String,
+    pub city: Option<String>,
+    pub state: Option<String>,
+    pub postal_code: Option<String>,
 }
 
 #[derive(Default, Clone, Deserialize, Debug)]
