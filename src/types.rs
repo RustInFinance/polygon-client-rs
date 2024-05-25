@@ -125,7 +125,7 @@ pub struct ReferenceTickerDetailsResultsV3 {
     pub branding: Option<Branding>,
     pub share_class_shares_outstanding: Option<f64>,
     pub weighted_shares_outstanding: Option<f64>,
-    pub round_lot: f64,
+    pub round_lot: Option<f64>,
 }
 
 pub type ReferenceTickerDetailsResponse = ReferenceTickerDetailsResponseV3;
