@@ -23,6 +23,7 @@ tokio-tungstenite = { version = "0.16.1", features = [
     "native-tls",
 ], optional = true }
 url = "2.1.0"
+log = "0.4.20"
 
 [features]
 default = ["rest", "websocket"]

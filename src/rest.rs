@@ -91,6 +91,7 @@ impl RESTClient {
     where
         RespType: serde::de::DeserializeOwned,
     {
+        log::info!("Sending request:{}{}", self.api_url,uri);
         let res = self
             .client
             .get(format!("{}{}", self.api_url, uri))
