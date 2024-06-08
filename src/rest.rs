@@ -70,6 +70,12 @@ impl RESTClient {
             },
         };
 
+        //TODO: enable this code to have connection through custom local proxy
+       // let proxy = reqwest::Proxy::http("127.0.0.1:8080").unwrap();
+       // let proxy2 = reqwest::Proxy::https("127.0.0.1:8080").unwrap();
+       // let mut client = reqwest::ClientBuilder::new().proxy(proxy).proxy(proxy2)
+       //     .danger_accept_invalid_certs(true);
+
         let mut client = reqwest::ClientBuilder::new();
 
         if let Some(timeout) = timeout {
@@ -92,6 +98,7 @@ impl RESTClient {
         RespType: serde::de::DeserializeOwned,
     {
         log::info!("Sending request:{}{}", self.api_url,uri);
+        log::info!("Request params: {:?}",query_params);
         let res = self
             .client
             .get(format!("{}{}", self.api_url, uri))

@@ -827,7 +827,7 @@ pub struct FinancialDimensions {
 
 #[derive(Clone, Deserialize, Debug)]
 pub struct ReferenceStockFinancialsVXResult {
-    pub id: String,
+    pub id: Option<String>,
     pub start_date: Option<String>,
     pub end_date: Option<String>,
     pub acceptance_datetime: Option<String>,
