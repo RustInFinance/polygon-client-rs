@@ -1079,14 +1079,14 @@ pub struct StockEquitiesGroupedDailyResponse {
 #[derive(Clone, Deserialize, Debug)]
 pub struct StockEquitiesPreviousCloseResponse {
     pub ticker: String,
-    pub adjusted: bool,
+    pub adjusted: Option<bool>,
     #[serde(rename = "queryCount")]
-    pub query_count: u32,
+    pub query_count: Option<u32>,
     #[serde(rename = "resultsCount")]
     pub results_count: Option<u32>,
     pub count: Option<u32>,
     pub status: Option<String>,
-    pub results: Vec<StockEquitiesAggregates>,
+    pub results: Option<Vec<StockEquitiesAggregates>>,
 }
 
 //
