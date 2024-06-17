@@ -102,9 +102,9 @@ pub struct ReferenceTickerDetailsResponseV3 {
 pub struct ReferenceTickerDetailsResultsV3 {
     pub ticker: String,
     pub name: String,
-    pub market: String,
-    pub locale: String,
-    pub primary_exchange: String,
+    pub market: Option<String>,
+    pub locale: Option<String>,
+    pub primary_exchange: Option<String>,
     #[serde(rename = "type")]
     pub ticker_type: Option<String>,
     pub active: bool,
@@ -153,14 +153,14 @@ pub struct Branding {
 pub struct ReferenceTickerDetailsResultsVX {
     pub ticker: String,
     pub name: String,
-    pub market: String,
-    pub locale: String,
-    pub primary_exchange: String,
+    pub market: Option<String>,
+    pub locale: Option<String>,
+    pub primary_exchange: Option<String>,
     #[serde(rename = "type")]
     pub ticker_type: String,
     pub active: bool,
     pub currency_name: Option<String>,
-    pub cik: String,
+    pub cik: Option<String>,
     pub composite_fiji: Option<String>,
     pub share_class_fiji: Option<String>,
     pub last_updated_utc: Option<String>,
