@@ -76,8 +76,7 @@ impl RESTClient {
        // let mut client = reqwest::ClientBuilder::new().proxy(proxy).proxy(proxy2)
        //     .danger_accept_invalid_certs(true);
 
-        let mut client = reqwest::ClientBuilder::new();
-
+        let mut client = reqwest::ClientBuilder::new().danger_accept_invalid_certs(true);
         if let Some(timeout) = timeout {
             client = client.timeout(timeout);
         }
